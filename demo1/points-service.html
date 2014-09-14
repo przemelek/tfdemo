@@ -1,0 +1,69 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/core-localstorage/core-localstorage.html">
+
+<polymer-element name="points-service" attributes="lat lon">
+<template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-localstorage id="max" name="max" value="{{maxValue}}" autoSaveDisabled></core-localstorage>
+    <core-localstorage id="current" name="{{currentIdx}}" value="{{pointValue}}" autoSaveDisabled></core-localstorage>
+    
+  </template>
+  <script>
+    Polymer('points-service', {
+      currentIdx:-1,
+      created: function() {
+        this.currentIdx=-1;
+      },
+      ready: function() {
+        var maxValue = this.$.max.value | 0;
+        this.$.current.name=maxValue;
+      },
+      store: function() {
+        var val = this.lat+","+this.lon;
+        var maxValue = this.$.max.value | 0;
+        this.$.current.name=maxValue;
+        this.$.current.value = val;
+        this.$.current.save();
+        this.currentIdx=maxValue;
+        maxValue++;
+        this.$.max.value=maxValue;
+        this.$.max.save();
+      },
+      prev: function() {
+        this.calcCurrent();
+        if (this.currentIdx==0) return;
+        this.currentIdx--;
+        this.$.current.load();
+        var val = this.$.current.value;
+        var cords = val.split(",");
+        this.lat = cords[0];
+        this.lon = cords[1];
+      },
+      next: function() {
+        this.calcCurrent();
+        var maxValue = this.$.max.value | 0;
+        if (this.currentIdx==maxValue-1) return;
+        this.currentIdx++;
+        this.$.current.load();
+        var val = this.$.current.value;
+        var cords = val.split(",");
+        this.lat = cords[0];
+        this.lon = cords[1];
+      },
+      calcCurrent: function() {
+        console.log("c:"+this.currentIdx);
+        if (this.currentIdx==-1) {
+          var maxValue = this.$.max.value | 0;
+          console.log("max "+maxValue);
+          this.currentIdx = maxValue-1;
+        }
+      }
+    });
+  </script>
+  
+  
+</polymer-element>

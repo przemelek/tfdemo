@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Save geopoint</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" sizes="64x64" href="favicon.ico" />
+
+  <script src="bower_components/platform/platform.js"></script>
+  
+  <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="google-map.html">
+  <link rel="import" href="geo-location.html">
+  <link rel="import" href="points-service.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+
+  
+<polymer-element name="my-map">
+<template>
+    <style>
+  google-map {
+    display: block;
+    height: 85%;
+  }
+  
+  paper-button {
+    background: #4285f4;
+    color: #fff;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+  paper-button:hover {
+    background: #2a56c6;
+  }
+
+  paper-button::shadow #ripple {
+    color: #2a56c6;
+  }
+</style>
+
+<geo-location auto id="loc" lat="{{lat}}" lon="{{lon}}"></geo-location>
+
+<google-map id="map" latitude="{{lat}}" longitude="{{lon}}" minZoom="1" maxZoom="30" zoom="20">
+  <google-map-marker latitude="{{lat}}" longitude="{{lon}}"
+                 title="Click me!" draggable="true">
+                 <div style="width:300px; height:150px">
+                    <h3>Test</h3>You are here :-)
+                    </div>
+  </google-map-marker>
+</google-map>
+
+<points-service id="pointsService" lat="{{lat}}" lon="{{lon}}"></points-service>
+
+<div horizontal center-justified layout>
+  <paper-button on-click="{{getLocation}}">Where am I?</paper-button>
+</div>
+<div horizontal center-justified layout>
+  <paper-button on-click="{{prev}}" layout left>&lt;&lt;&lt;</paper-button>
+  <paper-button on-click="{{store}}">Store this point</paper-button>
+  <paper-button on-click="{{next}}">&gt;&gt;&gt;</paper-button>
+</div>
+
+  </template>
+  <script>
+    Polymer('my-map',{
+      getLocation: function(event, detail, sender) {
+        this.$.loc.getLocation();
+      },
+      store: function(event, detail, sender) {
+        console.log(this.$.loc.lat);
+        console.log(this.$.loc.lon);
+        this.$.pointsService.store();
+      },
+      next: function(event, detail, sender) {
+        console.log("next");
+        this.$.pointsService.next();
+      },
+      prev: function(event, detail, sender) {
+        console.log("prev");
+        this.$.pointsService.prev();
+      }
+    });
+  </script>
+  
+  
+</polymer-element>
+
+</head>
+<body fullbleed>
+
+<my-map fit></my-map>
+
+</body>
+</html>
