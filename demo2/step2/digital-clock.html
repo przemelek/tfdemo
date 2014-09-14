@@ -1,0 +1,28 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<polymer-element name="digital-clock" attributes="time">
+  <template>
+    <style>
+    </style>
+    <div>{{hours}}:{{minutes}}:{{seconds}}</div>
+  </template>
+  <script>
+    Polymer('digital-clock', {
+      timeChanged: function() {
+        function lz(s) {
+          s=""+s;
+          while (s.length<2) {
+            s="0"+s;
+          }
+          return s;
+        }
+        var date = new Date(this.time);
+        this.hours = lz(date.getHours());
+        this.minutes = lz(date.getMinutes());
+        this.seconds = lz(date.getSeconds());
+      }
+    });
+
+  </script>
+  
+  
+</polymer-element>
