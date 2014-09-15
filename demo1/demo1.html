@@ -69,16 +69,12 @@
         this.$.loc.getLocation();
       },
       store: function(event, detail, sender) {
-        console.log(this.$.loc.lat);
-        console.log(this.$.loc.lon);
         this.$.pointsService.store();
       },
       next: function(event, detail, sender) {
-        console.log("next");
         this.$.pointsService.next();
       },
       prev: function(event, detail, sender) {
-        console.log("prev");
         this.$.pointsService.prev();
       }
     });

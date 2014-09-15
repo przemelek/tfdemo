@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <script src="bower_components/platform/platform.js"></script>
+
+  <link rel="import" href="bower_components/polymer/polymer.html">
+
+  <link rel="import" href="time-source.html">
+  <link rel="import" href="fast-time-source.html">
+  <link rel="import" href="digital-clock.html">
+  <link rel="import" href="analog-clock.html">
+
+  <polymer-element name="my-clock">
+    <template>
+      <time-source time="{{time}}"></time-source>
+      <digital-clock time="{{time}}"></digital-clock>
+      <analog-clock time="{{time}}"></analog-clock>
+
+      <fast-time-source time="{{fastTime}}"></fast-time-source>
+      <digital-clock time="{{fastTime}}"></digital-clock>
+      <analog-clock time="{{fastTime}}"></analog-clock>
+
+      
+    </template>
+    <script>
+      Polymer('my-clock', {});
+    </script>
+    
+    
+  </polymer-element>
+
+</head>
+<body>
+
+<my-clock></my-clock>
+
+</body>
+</html>

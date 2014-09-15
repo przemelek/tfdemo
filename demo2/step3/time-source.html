@@ -1,0 +1,24 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<polymer-element name="time-source" attributes="time">
+<template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+  </template>
+  <script>
+    Polymer('time-source', {
+      time:new Date(),
+      created: function() {
+        var t = this;
+        setInterval(function() {
+          t.time = new Date()*1;
+        },1000);
+      }
+
+    });
+  </script>
+  
+  
+</polymer-element>

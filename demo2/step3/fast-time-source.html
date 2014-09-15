@@ -1,0 +1,25 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<polymer-element name="fast-time-source" attributes="time">
+<template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+  </template>
+  <script>
+    Polymer('fast-time-source', {
+      time:new Date()*1,
+      created: function() {
+        var t = this;
+        this.time = new Date()*1;
+        setInterval(function() {
+          t.time=t.time+1000;
+        },5);
+      }
+
+    });
+  </script>
+  
+  
+</polymer-element>
