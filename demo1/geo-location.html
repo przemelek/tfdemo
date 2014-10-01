@@ -23,6 +23,7 @@
             var lon = position.coords.longitude;
             t.lat = lat;
             t.lon = lon;
+            t.fire("got-location",{lat:lat, lon:lon});
           }
           navigator.geolocation.getCurrentPosition(updatePosition);
       }

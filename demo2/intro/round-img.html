@@ -1,0 +1,12 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<polymer-element name="round-img" attributes="src">
+  <template>
+    <style>
+    img { border-radius: 50%; }
+    </style>
+    <img src="{{src}}">
+  </template>
+  <script>
+    Polymer('round-img', {});
+  </script>
+</polymer-element>

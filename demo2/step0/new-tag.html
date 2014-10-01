@@ -1,0 +1,22 @@
+
+
+<link rel="import" href="bower_components/polymer/polymer.html">
+<polymer-element name="new-tag">
+  <template>
+    <style>
+      h1 { color: red; }
+    </style>
+    <h1>{{counter}}</h1>
+    <button on-click="{{increment}}">Increment</button>
+  </template>
+  <script>
+    Polymer('new-tag', { 
+      created: function() {
+        this.counter = 0;
+      },
+      increment: function() {
+        this.counter++;
+      }
+    });
+  </script>
+</polymer-element>
