@@ -12,11 +12,11 @@
     "core-resizable": "Polymer/core-resizable#master"
   },
   "homepage": "https://github.com/Polymer/paper-tabs",
-  "_release": "967ee28769",
+  "_release": "4a08dfce8a",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "967ee28769920e580467a9dbc37e8425b0050397"
+    "commit": "4a08dfce8a2245de2d30956eea1c7a60d05a203b"
   },
   "_source": "git://github.com/Polymer/paper-tabs.git",
   "_target": "master",

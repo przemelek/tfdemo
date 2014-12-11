@@ -11,7 +11,8 @@
     "paper-elements": "Polymer/paper-elements#master",
     "google-map": "GoogleWebComponents/google-map#master",
     "core-icon": "Polymer/core-icon#master",
-    "paper-button": "Polymer/paper-button#master"
+    "paper-button": "Polymer/paper-button#master",
+    "core-localstorage": "Polymer/core-localstorage#master"
   },
   "resolutions": {
     "polymer": "~0.5.1",
